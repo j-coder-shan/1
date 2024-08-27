@@ -79,8 +79,10 @@ class list {
     }
 }
 
-class selectionSort {
+class sort {
     static int[] list;
+
+    //selection
     private void sort(){
         for (int i = list.length - 1; i >= 0 ; i--) {
             int maxIndex = getMaxIndex(i);
@@ -149,6 +151,40 @@ class selectionSort {
                     list[j] = list[j-1];
                     list[j-1] = temp;
                 }
+            }
+        }
+    }
+
+    //binary search
+    private static void search(int target){
+        recursive(target, 0, list.length - 1);
+    }
+    private static int recursive(int target, int min, int max) {
+        if(target > list[list.length - 1]){
+            System.out.println("Entered number is not in the list.");
+            return -1;
+        }else {
+            int mid = (min + max)/2;
+            if (list[mid] > target){
+                return recursive(target, min, mid - 1);
+            } else if (list[mid] < target) {
+                return recursive(target, mid + 1, max);
+            }else {
+                return mid;
+            }
+        }
+    }
+    private static void recursive_(int target, int min, int max) {
+        if(target > list[list.length - 1]){
+            System.out.println("Entered number,is not in the list.");
+        }else {
+            int mid = (min + max)/2;
+            if (list[mid] > target){
+                recursive_(target, min, mid - 1);
+            } else if (list[mid] < target) {
+                recursive_(target, mid + 1, max);
+            }else {
+                System.out.println("The number  is at index ");
             }
         }
     }
